@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajit Kumar | Professional Portfolio</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2a;
+      --panel: rgba(15, 23, 42, 0.85);
+      --panel-2: rgba(18, 31, 48, 0.9);
+      --text: #edf5ff;
+      --muted: #a9bfd8;
+      --primary: #6ee7d8;
+      --secondary: #f6c66a;
+      --accent: #8aa8ff;
+      --line: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110, 231, 216, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(138, 168, 255, 0.12), transparent 30%),
+        linear-gradient(180deg, #030b14 0%, #07111f 30%, #071821 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 30px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(7, 17, 31, 0.8);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, var(--primary), #5bd5ff);
+      color: #07111f;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 80px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(78, 205, 196, 0.5);
+      background: rgba(78, 205, 196, 0.08);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--secondary), #ffb067);
+      color: #20150a;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .stat {
+      min-width: 130px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .profile-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(126, 147, 255, 0.14), rgba(110, 231, 216, 0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+    }
+
+    .avatar-wrap {
+      width: 100%;
+      height: 560px;
+      max-height: 72vh;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #1a365a, #0d1b2a 55%, #102738);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+      padding: 14px;
+    }
+
+    .avatar-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.12), rgba(124, 156, 255, 0.12));
+      z-index: 0;
+    }
+
+    .avatar-wrap::after {
+      content: "AJIT";
+      position: absolute;
+      left: 28px;
+      bottom: 20px;
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, 0.14);
+      z-index: 0;
+      pointer-events: none;
+      text-transform: uppercase;
+      opacity: 0.95;
+    }
+
+    .avatar {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      background: linear-gradient(135deg, var(--primary), #c5fffb);
+      filter: saturate(1.08) contrast(1.07);
+      transform: scale(1.02);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.2);
+    }
+
+    .mini-card {
+      position: absolute;
+      background: rgba(9, 16, 27, 0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 14px 16px;
+      min-width: 170px;
+      box-shadow: var(--shadow);
+      z-index: 3;
+    }
+
+    .mini-card.bottom {
+      bottom: 18px;
+      right: 18px;
+      left: auto;
+    }
+
+    .mini-card small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .mini-card strong {
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .kicker {
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 540px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .info-panel,
+    .card,
+    .timeline-item,
+    .contact-panel {
+      background: rgba(12, 23, 35, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-panel {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .info-panel h3,
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .info-panel p,
+    .card p,
+    .timeline-item p,
+    .project-card p,
+    .contact-panel p {
+      color: var(--muted);
+    }
+
+    .facts {
+      margin-top: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .fact {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--text);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fact span {
+      color: var(--muted);
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .skill-tag {
+      background: rgba(124, 156, 255, 0.08);
+      border: 1px solid rgba(124, 156, 255, 0.25);
+      color: #dfe8ff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .experience-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 26px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 30px;
+      bottom: 18px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary), rgba(255,255,255,0));
+    }
+
+    .timeline-item .dot {
+      position: absolute;
+      left: 4px;
+      top: 24px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.12);
+    }
+
+    .timeline-item small {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .project-card {
+      background: rgba(12, 23, 35, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .project-thumb {
+      height: 190px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(124, 156, 255, 0.2), rgba(78, 205, 196, 0.18), rgba(255, 159, 67, 0.18));
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-tag {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+    }
+
+    .project-card .btn {
+      width: fit-content;
+      margin-top: auto;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .contact-panel h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-list {
+      margin-top: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--text);
+    }
+
+    .contact-item span {
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: rgba(5, 12, 19, 0.8);
+      padding: 26px 0;
+      color: var(--muted);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .experience-grid,
+      .project-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding-top: 60px;
+      }
+
+      .profile-card {
+        padding: 12px;
+      }
+
+      .avatar-wrap {
+        height: 440px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand"><span>Ajit</span> Maurya</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="nav-btn">Hire Me</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Available for opportunities</div>
+          <h1>I build <span class="highlight">digital experiences</span> that people love.</h1>
+          <p>
+            I’m Ajit, BCA Student a passionate web developer, creative problem solver and Programmer focused on building clean,
+            modern, and user-friendly digital products that help businesses grow and users succeed.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>Fresher</strong>
+              <span>Years Experience</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>Projects</span>
+            </div>
+            <div class="stat">
+              <strong>5+</strong>
+              <span>Clients</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar-wrap">
+            <img
+              class="avatar"
+              src="./WhatsApp%20Image%202026-09-13%20at%2011.11.59%20PM.jpeg"
+              alt="Ajit Maurya"
+              onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'1000\' viewBox=\'0 0 800 1000\'><defs><linearGradient id=\'g\' x1=\'0\' x2=\'1\' y1=\'0\' y2=\'1\'><stop offset=\'0%\' stop-color=\'#4ecdc4\'/><stop offset=\'100%\' stop-color=\'#7c9cff\'/></linearGradient></defs><rect width=\'800\' height=\'1000\' fill=\'#0d1b2a\'/><circle cx=\'400\' cy=\'300\' r=\'130\' fill=\'url(#g)\'/><path d=\'M180 820c32-120 118-185 220-185s188 65 220 185\' fill=\'url(#g)\'/><text x=\'50%\' y=\'50%\' text-anchor=\'middle\' dominant-baseline=\'middle\' font-family=\'Arial, sans-serif\' font-size=\'96\' font-weight=\'700\' fill=\'#e5eefb\'>AJ</text></svg>');"
+            />
+          </div>
+          <div class="mini-card bottom">
+            <small>Focus</small>
+            <strong>Responsive UI</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">About Me</div>
+            <h2>Professional, creative, and results-driven.</h2>
+          </div>
+          <p>
+            I enjoy turning ideas into polished digital products through thoughtful design, robust code,
+            and a strong user-first mindset.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="info-panel">
+            <h3>Who I am</h3>
+            <p>
+              I am a motivated developer who loves crafting responsive websites, intuitive interfaces,
+              and seamless user experiences. My goal is to create solutions that are not only visually
+              appealing but also practical, efficient, and impactful.
+            </p>
+
+            <div class="facts">
+              <div class="fact"><span>Name</span> <strong>Ajit Maurya</strong></div>
+              <div class="fact"><span>Location</span> <strong>Buxar-Bihar</strong></div>
+              <div class="fact"><span>Email</span> <strong>mauryaajit226@gmail.com</strong></div>
+              <div class="fact"><span>Phone</span> <strong>+91 9241069894</strong></div>
+            </div>
+          </div>
+
+          <div class="card" id="skills">
+            <h3>Core Skills</h3>
+            <p>
+              I work across frontend development, UI/UX thinking, and product-focused problem solving.
+            </p>
+            <div class="skills-wrap">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Responsive Design</span>
+              <span class="skill-tag">UI/UX</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Problem Solving</span>
+              <span class="skill-tag">DSA</span>
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">BASIC AI/ML</span>
+              <span class="skill-tag">Python</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Experience</div>
+            <h2>Education & journey.</h2>
+          </div>
+        </div>
+
+        <div class="experience-grid">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <small>2026 - Present</small>
+              <h3>BCA 5th Sem & intern in Bhaktinama Project</h3>
+              <p>
+                Currently Working on Bhaktinama, a startup/project focuse on providing a digital platform related to temples, devotees and religious activities.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <small>2024 - 2027</small>
+              <h3>BCA pursuing</h3>
+              <p>
+                Currently pursuing a Bachelor of Computer Applications (BCA) degree, focusing on software development,
+                programming languages, and computer science fundamentals.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <small>2022 - 2024</small>
+              <h3>Senior Secondary (12th)</h3>
+              <p>
+                Completed Senior Secondary studies with Science stream from Bihar School Examination Board focusing on Physics, Chemistry, Math and communication, and applied problem solving.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <small>2020 - 2022</small>
+              <h3>Secondary (9th & 10th)</h3>
+              <p>
+                Completed Secondary education from Bihar School Examination Board with a strong foundation in core subjects and a focus on academic excellence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Projects</div>
+            <h2>Selected work.</h2>
+          </div>
+          <p>Examples of the kind of projects I enjoy building and improving for real-world use.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-thumb">Portfolio</div>
+            <div>
+              <h3>Personal Portfolio Website</h3>
+              <p>
+                A modern portfolio website built to showcase my skills, experience, and profile in a clean,
+                creative, and professional format.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">Responsive</span>
+            </div>
+            <a href="#" class="btn btn-secondary">Live Demo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-wrap">
+          <div class="contact-panel">
+            <div class="kicker">Contact</div>
+            <h3>Let’s build something great together.</h3>
+            <p>
+              I’m open to freelance work, collaborations, internships, and full-time opportunities.
+            </p>
+            <div class="contact-list">
+              <div class="contact-item"><span>Email</span><strong>mauryaajit226@gmail.com</strong></div>
+              <div class="contact-item"><span>Phone</span><strong>+91 9241069894</strong></div>
+              <div class="contact-item"><span>Location</span><strong>Buxar-Bihar</strong></div>
+            </div>
+          </div>
+
+          <div class="contact-panel">
+            <div class="kicker">Availability</div>
+            <h3>Open for new opportunities.</h3>
+            <p>
+              Whether you need a clean portfolio, a marketing landing page, a user-friendly dashboard,
+              or a professional web presence, I can help turn your vision into a polished product.
+            </p>
+            <div class="cta-row" style="margin-top: 24px;">
+              <a class="btn btn-primary" href="mailto:ajit@example.com">Email Me</a>
+              <a class="btn btn-secondary" href="tel:+919876543210">Call Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <span>© <span id="year"></span> Ajit Maurya</span>
+      <span>Designed with passion and purpose.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
+</body>
+</html>
